@@ -1,6 +1,6 @@
 {
   "name": "connect-mssql-v2",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "MS SQL Server session store for Express Session",
   "main": "dist/src/store",
   "types": "dist/src/store.d.ts",
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/JLuboff/connect-mssql-v2#readme",
   "dependencies": {
-    "@types/mssql": "^4.3.1",
+    "@types/mssql": "^6.0.0",
     "mssql": "^6.0.1"
   },
   "devDependencies": {
