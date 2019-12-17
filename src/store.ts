@@ -158,7 +158,7 @@ const Store = (
       // Attachs sessionError event listener and emits on error on any
       // store error and includes method where error occured
       // eslint-disable-next-line no-shadow
-      this.databaseConnection.on('sessionError', (error, method) => this.emit('sessionError', error, method));
+      this.databaseConnection.once('sessionError', (error, method) => this.emit('sessionError', error, method));
       this.databaseConnection.emit('sessionError', error, method);
       if (callback) {
         return callback(error);
@@ -217,7 +217,7 @@ const Store = (
           // cast session.cookie.expires to Date to avoid TS error
           const isExpireBoolean = !!session.cookie && typeof session.cookie.expires === 'boolean';
           const expires = new Date(
-            isExpireBoolean || !(session.cookie?.expires)
+            isExpireBoolean || !session.cookie?.expires
               ? Date.now() + this.ttl
               : (session.cookie.expires as Date),
           );
@@ -263,7 +263,7 @@ const Store = (
           // cast session.cookie.expires to Date to avoid TS error
           const isExpireBoolean = !!session.cookie && typeof session.cookie.expires === 'boolean';
           const expires = new Date(
-            isExpireBoolean || !(session.cookie?.expires)
+            isExpireBoolean || !session.cookie?.expires
               ? Date.now() + this.ttl
               : (session.cookie.expires as Date),
           );
